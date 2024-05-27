@@ -1,6 +1,6 @@
-resource "aws_ssm_parameter" "dg_sg_id" {
-  name  = "/${var.project_name}/${var.environment}/dg_sg_id"
-  type  = "String"
+resource "aws_ssm_parameter" "db_sg_id" {
+  name = "/${var.project_name}/${var.environment}/db_sg_id"  
+  type = "String"
   value = module.db.sg_id
 }
 
@@ -25,5 +25,5 @@ resource "aws_ssm_parameter" "bation_sg_id" {
 resource "aws_ssm_parameter" "ansible_sg_id" {
   name  = "/${var.project_name}/${var.environment}/ansible_sg_id"
   type  = "String"
-  value = module.ansible_sg_id
+  value = module.ansible.sg_id
 }
