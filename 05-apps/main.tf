@@ -44,7 +44,7 @@ module "ansible" {
   instance_type          = "t3.micro"
   vpc_security_group_ids = [data.aws_ssm_parameter.ansible_sg_id.value]
   #convert stringlist to list and get the 1st element
-  subnet_id              = local.private_subnet_id
+  subnet_id = local.public_subnet_id
   ami = data.aws_ami.ami_id-name.id
   user_data = file("expense.sh")
 
@@ -69,7 +69,7 @@ module "records" {
       type    = "A"
       ttl     = 1
       records = [
-        module.backend.private_ip
+        module.frontend.private_ip
       ]
     },
     {
@@ -77,7 +77,7 @@ module "records" {
       type    = "A"
       ttl     = 1
       records = [
-        module.frontend.private_ip
+        module.backend.private_ip
       ]
     },
     {

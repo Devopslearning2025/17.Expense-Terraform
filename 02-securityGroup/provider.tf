@@ -7,7 +7,7 @@ terraform {
   }
   backend "s3" {
     bucket = "devopslearning2025-remote-state"
-    key    = "expense-dev-SG"
+    key    = "expense-Dev-SG"
     region = "us-east-1"
     dynamodb_table = "devopslearning2025-remote-state-lock"
   }

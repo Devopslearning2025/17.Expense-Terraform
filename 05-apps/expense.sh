@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#user data will get sudo access
 dnf install ansible -y
 
 cd /tmp
