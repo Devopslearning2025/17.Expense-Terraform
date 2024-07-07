@@ -8,7 +8,7 @@ pipeline {
         ansiColor('xterm')
     }
     parameters {
-        choice(name: 'Action', choices: ['Deploy', 'Destroy'], description: 'Pick something')
+        choice(name: 'Action', choices: ['Apply', 'Destroy'], description: 'Pick something')
     }
     stages {
         stage('init') {
@@ -26,6 +26,27 @@ pipeline {
             }
         }
         stage('Deploy') {
+            when {
+                expression {
+                    params.Action == 'Apply'
+                }
+            }
+            input {
+                message "Should we continue"
+                ok "Yes, we should."
+            }
+            steps {
+                sh """
+
+                """
+            }
+        }
+       stage('Destroy') {
+            when {
+                expression {
+                    params.Action == 'Destroy'
+                }
+            }
             input {
                 message "Should we continue"
                 ok "Yes, we should."
