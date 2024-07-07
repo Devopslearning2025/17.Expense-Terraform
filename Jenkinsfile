@@ -33,7 +33,7 @@ pipeline {
         post { 
             always { 
                 echo 'I will always say Hello again!'
-                deletedir()
+                deleteDir()
             }
             success {
                 echo 'i will run the pipeline is usccess'
