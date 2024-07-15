@@ -26,11 +26,11 @@ pipeline {
             }
         }
         stage('Deploy') {
-            // when {
-            //     expression {
-            //         params.Action == 'Apply'
-            //     }
-            // }
+            when {
+                expression {
+                    params.Action == 'Apply'
+                }
+            }
             input {
                 message "Should we continue"
                 ok "Yes, we should."
@@ -38,23 +38,24 @@ pipeline {
             steps {
                 sh """
                 cd 01-vpc;ls -lrth
-                terraform init -reconfigure
+                echo "this is deploy"
+                echo "";terraform init -reconfigure;echo ""
                 """
             }
         }
-    //    stage('Destroy') {
-    //         when {
-    //             expression {
-    //                 params.Action == 'Destroy'
-    //             }
-    //         }
-    //         steps {
-    //             sh """
-    //             cd 01-vpc
-    //             ls -lrth
-    //             """
-    //         }
-    //     }
+        stage('Destroy') {
+            when {
+                expression {
+                    params.Action == 'Destroy'
+                }
+            }
+            steps {
+                sh """
+                cd 01-vpc
+                echo "this destroy"
+                """
+            }
+        }
     }
         post { 
             always { 
