@@ -1,19 +1,17 @@
 pipeline {
     agent {
-        label 'AGENT-1'
+        label 'Agent-1'
     }
     options {
         timeout(time: 30, unit: 'MINUTES') 
         disableConcurrentBuilds()
-        ansiColor('xterm')
-    }
-    parameters {
-        choice(name: 'Action', choices: ['Apply', 'Destroy'], description: 'Pick something')
+        //ansiColor('xterm')
     }
     stages {
         stage('init') {
             steps {
                 sh """
+                ls -lrth
 
                 """
             }
@@ -26,31 +24,6 @@ pipeline {
             }
         }
         stage('Deploy') {
-            when {
-                expression {
-                    params.Action == 'Apply'
-                }
-            }
-            input {
-                message "Should we continue"
-                ok "Yes, we should."
-            }
-            steps {
-                sh """
-
-                """
-            }
-        }
-       stage('Destroy') {
-            when {
-                expression {
-                    params.Action == 'Destroy'
-                }
-            }
-            input {
-                message "Should we continue"
-                ok "Yes, we should."
-            }
             steps {
                 sh """
 
@@ -61,7 +34,6 @@ pipeline {
         post { 
             always { 
                 echo 'I will always say Hello again!'
-                deleteDir()
             }
             success {
                 echo 'i will run the pipeline is usccess'
