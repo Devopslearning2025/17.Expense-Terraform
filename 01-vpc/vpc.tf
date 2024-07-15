@@ -1,6 +1,6 @@
 module "vpc" {
-    source = "../../15.Terraform-VPC-Module"
-    #source = "git::https://github.com/Devopslearning2025/15.Terraform-VPC-Module?ref=main"
+    #source = "../../15.Terraform-VPC-Module"
+    source = "git::https://github.com/Devopslearning2025/15.Terraform-VPC-Module?ref=main"
     project_name = var.project_name
     common_tags = var.common_tags
     public_subnet_cidrs = var.public_subnet_cidrs
