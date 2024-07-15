@@ -7,9 +7,9 @@ pipeline {
         disableConcurrentBuilds()
         ansiColor('xterm')
     }
-    // parameters {
-    //     choice(name: 'Action', choices: ['Apply', 'Destroy'], description: 'Pick something')
-    // }
+    parameters {
+        choice(name: 'Action', choices: ['Apply', 'Destroy'], description: 'Pick something')
+    }
     stages {
         stage('init') {
             steps {
