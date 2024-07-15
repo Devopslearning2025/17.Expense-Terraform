@@ -14,14 +14,14 @@ pipeline {
         stage('init') {
             steps {
                 sh """
-
+                cd 01-vpc;ls -lrth
                 """
             }
         }
         stage('plan') {
             steps {
                 sh """
-
+                cd 01-vpc;ls -lrth
                 """
             }
         }
@@ -31,15 +31,14 @@ pipeline {
             //         params.Action == 'Apply'
             //     }
             // }
-            // input {
-            //     message "Should we continue"
-            //     ok "Yes, we should."
-            // }
+            input {
+                message "Should we continue"
+                ok "Yes, we should."
+            }
             steps {
                 sh """
-                cd 01-vpc
-                ls -lrth
-                terraform init -reconfigure
+                cd 01-vpc;ls -lrth
+                //terraform init -reconfigure
                 """
             }
         }
