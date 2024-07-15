@@ -5,7 +5,7 @@ pipeline {
     options {
         timeout(time: 30, unit: 'MINUTES') 
         disableConcurrentBuilds()
-       // ansiColor('xterm')
+        ansiColor('xterm')
     }
     // parameters {
     //     choice(name: 'Action', choices: ['Apply', 'Destroy'], description: 'Pick something')
@@ -60,7 +60,7 @@ pipeline {
         post { 
             always { 
                 echo 'I will always say Hello again!'
-                //deleteDir()
+                deleteDir()
             }
             success {
                 echo 'i will run the pipeline is usccess'
